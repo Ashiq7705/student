@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Search using jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #search {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Search</h2>
+    
+    <input type="text" id="search" placeholder="Search for data">
+    
+    <ul id="data-list">
+        <li>Alice</li>
+        <li>Bob</li>
+        <li>Charlie</li>
+        <li>David</li>
+        <li>Eva</li>
+        <li>Frank</li>
+        <li>Grace</li>
+        <li>Helen</li>
+        <li>Isabel</li>
+    </ul>
+
+    <script>
+        // Function to perform data search
+        function search() {
+            var searchQuery = $('#search').val().toLowerCase();
+            
+            // Loop through each list item
+            $('#data-list li').each(function() {
+                var listItem = $(this).text().toLowerCase();
+                
+                // Check if the search query exists in the list item
+                if (listItem.indexOf(searchQuery) === -1) {
+                    $(this).hide(); // Hide the item if not found
+                } else {
+                    $(this).show(); // Show the item if found
+                }
+            });
+        }
+
+        // Attach a keyup event handler to the search input
+        $('#search').keyup(function() {
+            search(); // Call the search function on keyup
+        });
+
+        // Initial search on page load
+        search();
+    </script>
+</body>
+</html>
